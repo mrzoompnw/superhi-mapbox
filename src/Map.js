@@ -22,9 +22,21 @@ class Map extends Component {
     const navigationControl = new mapbox.NavigationControl()
 
     map.addControl(navigationControl)
+
+    this.props.app.setState({
+      map: map
+    })
   }
 
   render() {
+    const app = this.props.app
+    const map = app.state.map
+
+    if(map) {
+      map.setStyle(app.state.style)
+    }
+
+
     return (
       <div id="map">
       </div>
